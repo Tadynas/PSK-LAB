@@ -1,12 +1,12 @@
 package lt.vu.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "User.findAll", query = "select u from User as u")
+})
 public class User {
     private Integer id;
     private String username;
@@ -39,9 +39,7 @@ public class User {
         User user = (User) o;
 
         if (!Objects.equals(id, user.id)) return false;
-        if (!Objects.equals(username, user.username)) return false;
-
-        return true;
+        return Objects.equals(username, user.username);
     }
 
     @Override

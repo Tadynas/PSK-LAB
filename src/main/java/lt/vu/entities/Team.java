@@ -39,7 +39,6 @@ public class Team {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name);
     }
 }

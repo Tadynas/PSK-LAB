@@ -24,6 +24,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     private String name;
 
     @OneToMany(mappedBy = "team")

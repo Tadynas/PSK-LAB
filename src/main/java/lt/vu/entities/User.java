@@ -29,6 +29,13 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+    @ManyToMany
+    @JoinTable(
+            name = "USER_GAME",
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "GAME_ID"))
+    private List<Game> purchasedGames = new ArrayList<>();;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -36,12 +43,12 @@ public class User {
         User user = (User) o;
         return Objects.equals(id, user.id) &&
                 Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password);
+                Objects.equals(password, user.password) &&
+                Objects.equals(purchasedGames, user.purchasedGames);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, username, password);
+        return Objects.hash(id, username, password, purchasedGames);
     }
 }

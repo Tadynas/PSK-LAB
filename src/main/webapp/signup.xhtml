@@ -8,15 +8,14 @@
 </h:head>
 <h:body>
     <div class="center">
-        <h2>Sign In</h2>
+        <h2>Sign Up</h2>
         <h:form>
             <label>Username</label>
             <h:inputText value="#{users.userToCreate.username}" required="true" />
             <label>Password</label>
             <h:inputSecret value="#{users.userToCreate.password}" required="true" />
-            <h:commandButton value="Sign In" action="library" />
+            <h:commandButton value="Sign Up" action="#{users.createUser}" actionListener="index"/>
         </h:form>
-        <h:link outcome="signup" value="Sign Up"/>
     </div>
 </h:body>
 </html>

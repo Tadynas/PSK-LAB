@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head>
+    <link rel="stylesheet" href="css/style.css"/>
+</h:head>
+<h:body>
+    <header>
+        <h2>Welcome!</h2>
+        <h:form class="headerCenter">
+            <h:commandButton value="Library" action="library"/>
+            <h:commandButton value="Shop" action="shop"/>
+        </h:form>
+        <div class="headerRight">
+            <h2>Wallet: $900</h2>
+            <h:link value="Sign Out" outcome="index"/>
+        </div>
+    </header>
+
+    <h2 class="textCenter">Library</h2>
+
+    <div class="center">
+        <h:link outcome="publisher" value="EA"/>
+        <div class="games">
+            <div>
+                <h2>Sims 4</h2>
+                <h:graphicImage value="https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4.jpg"/>
+                <br/>
+                <h:button value="Play"/>
+            </div>
+            <div>
+                <h2>Sims 4</h2>
+                <h:graphicImage value="https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4.jpg"/>
+                <br/>
+                <h:button value="Play"/>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>

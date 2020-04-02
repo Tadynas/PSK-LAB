@@ -6,11 +6,6 @@
     justify-content: center;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
 input[type="submit"] {
     display: block;
     margin: 0 auto 10px auto;
@@ -26,12 +21,6 @@ header {
     justify-content: space-between;
 }
 
-.headerCenter {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 .headerRight {
     text-align: right;
 }
@@ -42,17 +31,36 @@ header {
     text-align: center;
 }
 
-.games input[type="button"] {
+form button, form input {
     width: 100%;
 }
 
-.games div {
+form button {
+    margin-bottom: 10px;
+}
+
+.libraryGameItem {
     margin-right: 20px;
 }
 
-.games div:last-child {
+.gameTitle {
+    margin-top: 20px;
+    margin-bottom: -10px;
+
+}
+
+.libraryGameItem:last-child {
     margin-right: 0px;
 }
+
+.shopGameItem {
+    margin-right: 20px;
+}
+
+.shopGameItem:nth-last-child(2) {
+    margin-right: 0px;
+}
+
 
 .games img {
     height: 200px;

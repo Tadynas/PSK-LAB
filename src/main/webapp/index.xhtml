@@ -9,14 +9,14 @@
 <h:body>
     <div class="center">
         <h2>Sign In</h2>
-        <h:form>
+        <h:form class="center">
             <label>Username</label>
-            <h:inputText value="#{users.userToCreate.username}" required="true" />
+            <h:inputText value="#{users.username}" required="true" />
             <label>Password</label>
-            <h:inputSecret value="#{users.userToCreate.password}" required="true" />
-            <h:commandButton value="Sign In" action="library" />
+            <h:inputSecret value="#{users.password}" required="true" />
+            <h:commandButton value="Sign In" action="#{users.validate}" />
         </h:form>
-        <h:link outcome="signup" value="Sign Up"/>
+        <h:link outcome="signup?faces-redirect=true" value="Sign Up"/>
     </div>
 </h:body>
 </html>

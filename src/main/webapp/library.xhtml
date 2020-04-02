@@ -9,11 +9,11 @@
 </h:head>
 <h:body>
     <header>
-        <h2>Welcome!</h2>
-        <h:form class="headerCenter">
-            <h:commandButton value="Library" action="library"/>
-            <h:commandButton value="Shop" action="shop"/>
-        </h:form>
+        <h2>Welcome, #{store.loggedUser.username}!</h2>
+        <div class="headerCenter">
+            <h:button value="Library" outcome="library?userId=#{store.loggedUser.id}"/>
+            <h:button value="Shop" outcome="shop?userId=#{store.loggedUser.id}"/>
+        </div>
         <div class="headerRight">
             <h2>Wallet: $900</h2>
             <h:link value="Sign Out" outcome="index"/>
@@ -23,21 +23,19 @@
     <h2 class="textCenter">Library</h2>
 
     <div class="center">
-        <h:link outcome="publisher" value="EA"/>
-        <div class="games">
-            <div>
-                <h2>Sims 4</h2>
-                <h:graphicImage value="https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4.jpg"/>
-                <br/>
-                <h:button value="Play"/>
+        <ui:repeat value="#{publishers.publisherList}" var="publisher">
+            <h:link value="#{publisher.name}" outcome="publisher?userId=#{store.loggedUser.id}&amp;publisherId=#{publisher.id}" styleClass="gameTitle"/>
+            <div class="games">
+                <ui:repeat value="#{store.loggedUser.purchasedGames}" var="game">
+                    <h:form class="libraryGameItem" rendered="#{publisher.id == game.publisher.id}">
+                        <h2>#{game.title}</h2>
+                        <h:graphicImage value="#{game.coverLink}"/>
+                        <br/>
+                        <button>Play</button>
+                    </h:form>
+                </ui:repeat>
             </div>
-            <div>
-                <h2>Sims 4</h2>
-                <h:graphicImage value="https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4.jpg"/>
-                <br/>
-                <h:button value="Play"/>
-            </div>
-        </div>
+        </ui:repeat>
     </div>
 </h:body>
 </html>

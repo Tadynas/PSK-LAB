@@ -9,11 +9,11 @@
 <h:body>
     <div class="center">
         <h2>Sign Up</h2>
-        <h:form>
+        <h:form class="center">
             <label>Username</label>
-            <h:inputText value="#{users.userToCreate.username}" required="true" />
+            <h:inputText value="#{users.username}" required="true" />
             <label>Password</label>
-            <h:inputSecret value="#{users.userToCreate.password}" required="true" />
+            <h:inputSecret value="#{users.password}" required="true" />
             <h:commandButton value="Sign Up" action="#{users.createUser}" actionListener="index"/>
         </h:form>
     </div>

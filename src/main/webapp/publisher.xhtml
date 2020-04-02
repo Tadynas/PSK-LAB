@@ -9,11 +9,11 @@
 </h:head>
 <h:body>
     <header>
-        <h2>Welcome!</h2>
-        <h:form class="headerCenter">
-            <h:commandButton value="Library" action="library"/>
-            <h:commandButton value="Shop" action="shop"/>
-        </h:form>
+        <h2>Welcome, #{store.loggedUser.username}!</h2>
+        <div class="headerCenter">
+            <h:button value="Library" outcome="library?userId=#{store.loggedUser.id}"/>
+            <h:button value="Shop" outcome="shop?userId=#{store.loggedUser.id}"/>
+        </div>
         <div class="headerRight">
             <h2>Wallet: $900</h2>
             <h:link value="Sign Out" outcome="index"/>
@@ -21,29 +21,25 @@
     </header>
 
     <div class="center">
-        <h2>EA</h2>
-        <h:graphicImage value="https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4.jpg" width="200" height="50"/>
-        <h3>Founded - </h3>
-        <h:link outcome="library" value="Website"/>
+        <h2>#{publisherInfo.publisher.name}</h2>
+        <h:graphicImage value="#{publisherInfo.publisher.logoLink}" width="200" height="50"/>
+        <h3>Founded - #{publisherInfo.publisher.founded}</h3>
+        <a href="#{publisherInfo.publisher.websiteLink}" target="_blank">Official Website</a>
     </div>
 
     <h2 class="textCenter">Games</h2>
 
     <div class="center">
         <div class="games">
-            <div>
-                <h2>Sims 4</h2>
-                <h:graphicImage value="https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4.jpg"/>
-                <br/>
-                <h:button value="99.99"/>
-            </div>
-            <div>
-                <h2>Sims 4</h2>
-                <h:graphicImage value="https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4.jpg"/>
-                <br/>
-                <h:button value="99.88"/>
-            </div>
+            <ui:repeat value="#{publisherInfo.publisher.games}" var="game">
+                <h:form class="libraryGameItem">
+                    <h2>#{game.title}</h2>
+                    <h:graphicImage value="#{game.coverLink}"/>
+                    <br/>
+                </h:form>
+            </ui:repeat>
         </div>
     </div>
+
 </h:body>
 </html>

@@ -17,24 +17,40 @@ public class Users {
     @Inject
     private UsersDAO usersDAO;
 
-    @Getter @Setter
-    private User userToCreate = new User();
-
     @Getter
     private List<User> userList;
+
+    @Getter @Setter
+    private String username, password;
 
     @PostConstruct
     public void init(){
         loadUserList();
     }
 
+    private void loadUserList(){
+        this.userList = usersDAO.loadAll();
+    }
+
     @Transactional
     public String createUser(){
+        User userToCreate = new User();
+        userToCreate.setUsername(username);
+        userToCreate.setPassword(password);
         this.usersDAO.persist(userToCreate);
         return "index?faces-redirect=true";
     }
 
-    private void loadUserList(){
-        this.userList = usersDAO.loadAll();
+    @Transactional
+    public String validate(){
+        for (User user: getUserList()) {
+            if(user.getUsername().toLowerCase().equals(username.toLowerCase()) &&
+                user.getPassword().equals(password))
+            {
+                System.out.println(user.getId());
+                return "library?faces-redirect=true userId="+ user.getId();
+            }
+        }
+        return "index";
     }
 }

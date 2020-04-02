@@ -1,5 +1,6 @@
 package lt.vu.persistence;
 
+import lt.vu.entities.Player;
 import lt.vu.entities.User;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,7 +25,12 @@ public class UsersDAO {
         this.em.persist(user);
     }
 
+    public User update(User user){
+        return em.merge(user);
+    }
+
     public User findOne(Integer id) {
         return em.find(User.class, id);
     }
+
 }

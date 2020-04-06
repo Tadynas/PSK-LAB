@@ -15,9 +15,4 @@ Project is based on *Maven*, thus import project to IntelliJ IDEA by:
 ## Database
 
 Database will be created after first successful launch. Source URL: "jdbc:h2:~/h2database/SteamDB;AUTO_SERVER=TRUE". User: "sa" Password: "sa".
-Additionally, database will filled data and SQL insert files can be found at: "src\main\resources\Database".
-
-
-## Admin
-
-Publishers and games can be added using admin console. To login as admin fill the sign in fields in the index.xhtml: Username: "admin" Password: "admin"
+Additionaly, database will filled data and SQL insert files can be found at: "src\main\resources\Database".

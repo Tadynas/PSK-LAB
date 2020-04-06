@@ -43,10 +43,8 @@ form button {
     margin-right: 20px;
 }
 
-.gameTitle {
-    margin-top: 20px;
-    margin-bottom: -10px;
-
+.publisherName {
+    margin-top: 30px;
 }
 
 .libraryGameItem:last-child {

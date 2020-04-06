@@ -12,12 +12,12 @@
         <h2>Sign Up</h2>
         <h:form class="center">
             <label>Username</label>
-            <h:inputText value="#{users.username}" required="true" />
+            <h:inputText value="#{usersMyBatis.username}" required="true" />
             <label>Password</label>
-            <h:inputSecret value="#{users.password}" required="true" />
-            <h:commandButton value="Sign Up" action="#{users.createUser}" actionListener="index"/>
+            <h:inputSecret value="#{usersMyBatis.password}" required="true" />
+            <h:commandButton value="Sign Up" action="#{usersMyBatis.createUser}" actionListener="index"/>
         </h:form>
     </div>
-    <h:link value="Use MyBatis Implementation" outcome="myBatis/signup"/>
+    <h:link value="Use JPA Implementation" outcome="/signup"/>
 </h:body>
 </html>

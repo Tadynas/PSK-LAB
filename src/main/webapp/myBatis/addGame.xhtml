@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"  />
+    <title>Add Game</title>
+</h:head>
+<h:body>
+
+    <div class="center">
+        <h2>Admin</h2>
+        <h2>Add Game</h2>
+        <h2>#{gameConsoleMyBatis.publisher.name}</h2>
+        <h:form class="center">
+            <label>Title</label>
+            <h:inputText value="#{gameConsoleMyBatis.gameToAdd.title}" required="true" />
+            <label>Price</label>
+            <h:inputText value="#{gameConsoleMyBatis.gameToAdd.price}" required="true" />
+            <label>Cover Link</label>
+            <h:inputText value="#{gameConsoleMyBatis.gameToAdd.coverLink}" required="true" />
+            <h:commandButton value="Add Game" action="#{gameConsoleMyBatis.addGame}">
+                <f:param name="publisherId" value="#{gameConsoleMyBatis.publisher.id}" />
+            </h:commandButton>
+        </h:form>
+    </div>
+    <h:link value="Use JPA Implementation" outcome="/addGame?publisherId=#{gameConsoleMyBatis.publisher.id}"/>
+</h:body>
+</html>

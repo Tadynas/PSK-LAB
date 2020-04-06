@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,23 +23,23 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(max = 50)
+    @Size(max = 64)
     @Column(name = "NAME")
     private String name;
 
     @Column(name = "FOUNDED")
-    private LocalDate founded;
+    private Date founded;
 
-    @Size(max = 100)
+    @Size(max = 256)
     @Column(name = "LOGO_LINK")
     private String logoLink;
 
-    @Size(max = 100)
+    @Size(max = 256)
     @Column(name = "WEBSITE_LINK")
     private String websiteLink;
 
     @OneToMany(mappedBy = "publisher")
-    private List<Game> games = new ArrayList<>();
+    private List<Game> publishedGames = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -50,11 +51,11 @@ public class Publisher {
                 Objects.equals(founded, publisher.founded) &&
                 Objects.equals(logoLink, publisher.logoLink) &&
                 Objects.equals(websiteLink, publisher.websiteLink) &&
-                Objects.equals(games, publisher.games);
+                Objects.equals(publishedGames, publisher.publishedGames);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, founded, logoLink, websiteLink, games);
+        return Objects.hash(id, name, founded, logoLink, websiteLink, publishedGames);
     }
 }

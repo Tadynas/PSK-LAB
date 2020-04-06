@@ -1,21 +1,19 @@
-package lt.vu.usecases;
+package lt.vu.usecases.mybatis;
 
 import lombok.Getter;
-import lt.vu.entities.Game;
-import lt.vu.persistence.GamesDAO;
-import lt.vu.persistence.UsersDAO;
+import lt.vu.mybatis.dao.GameMapper;
+import lt.vu.mybatis.model.Game;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 @Model
-public class Games {
+public class GamesMyBatis {
 
     @Inject
-    private GamesDAO GamesDAO;
+    private GameMapper gameMapper;
 
     @Getter
     private List<Game> allGames;
@@ -26,7 +24,7 @@ public class Games {
     }
 
     private void loadGameList(){
-        allGames = GamesDAO.loadAll();
+        allGames = gameMapper.selectAll();
     }
 
 

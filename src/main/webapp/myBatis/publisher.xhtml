@@ -10,10 +10,10 @@
 </h:head>
 <h:body>
     <header>
-        <h2>Welcome, #{store.loggedUser.username}!</h2>
+        <h2>Welcome, #{storeMyBatis.loggedUser.username}!</h2>
         <div class="headerCenter">
-            <h:button value="Library" outcome="library?userId=#{store.loggedUser.id}"/>
-            <h:button value="Shop" outcome="shop?userId=#{store.loggedUser.id}"/>
+            <h:button value="Library" outcome="library?userId=#{storeMyBatis.loggedUser.id}"/>
+            <h:button value="Shop" outcome="shop?userId=#{storeMyBatis.loggedUser.id}"/>
         </div>
         <div class="headerRight">
             <h2>Wallet: $900</h2>
@@ -22,19 +22,19 @@
     </header>
 
     <div class="center">
-        <h2>#{publisherInfo.publisher.name}</h2>
-        <h:graphicImage value="#{publisherInfo.publisher.logoLink}" height="100"/>
-        <h3>Founded - #{publisherInfo.publisher.founded}</h3>
-        <a href="#{publisherInfo.publisher.websiteLink}" target="_blank">Official Website</a>
+        <h2>#{publisherInfoMyBatis.publisher.name}</h2>
+        <h:graphicImage value="#{publisherInfoMyBatis.publisher.logoLink}" height="100"/>
+        <h3>Founded - #{publisherInfoMyBatis.publisher.founded}</h3>
+        <a href="#{publisherInfoMyBatis.publisher.websiteLink}" target="_blank">Official Website</a>
     </div>
 
     <h2 class="textCenter">Games</h2>
 
     <div class="center">
         <div class="games">
-            <ui:repeat value="#{publisherInfo.publisher.publishedGames}" var="game">
+            <ui:repeat value="#{publisherInfoMyBatis.publisher.publishedGames}" var="game">
                 <h:form class="libraryGameItem">
-                    <h:link outcome="players?userId=#{store.loggedUser.id}&amp;gameId=#{game.id}">
+                    <h:link outcome="players?userId=#{storeMyBatis.loggedUser.id}&amp;gameId=#{game.id}">
                         <h2>#{game.title}</h2>
                     </h:link>
                     <h:graphicImage value="#{game.coverLink}"/>
@@ -43,6 +43,6 @@
             </ui:repeat>
         </div>
     </div>
-    <h:link value="Use MyBatis Implementation" outcome="myBatis/publisher?userId=#{store.loggedUser.id}&amp;publisherId=#{publisherInfo.publisher.id}"/>
+    <h:link value="Use JPA Implementation" outcome="/publisher?userId=#{storeMyBatis.loggedUser.id}&amp;publisherId=#{publisherInfoMyBatis.publisher.id}"/>
 </h:body>
 </html>

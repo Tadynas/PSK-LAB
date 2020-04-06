@@ -1,20 +1,19 @@
-package lt.vu.usecases;
+package lt.vu.usecases.mybatis;
 
 import lombok.Getter;
-import lt.vu.entities.Publisher;
-import lt.vu.persistence.PublishersDAO;
+import lt.vu.mybatis.dao.PublisherMapper;
+import lt.vu.mybatis.model.Publisher;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 @Model
-public class Publishers {
+public class PublishersMyBatis {
 
     @Inject
-    private PublishersDAO publishersDAO;
+    private PublisherMapper publisherMapper;
 
     @Getter
     private List<Publisher> publisherList;
@@ -25,7 +24,7 @@ public class Publishers {
     }
 
     private void loadPublisherList(){
-        publisherList = publishersDAO.loadAll();
+        publisherList = publisherMapper.selectAll();
     }
 
 

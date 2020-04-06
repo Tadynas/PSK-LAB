@@ -3,24 +3,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://java.sun.com/jsf/core">
-<h:head/>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"  />
+    <title>Players</title>
+</h:head>
 <h:body>
-    <h2>Players playing in #{playersForTeam.team.name} team:</h2>
-    <ol>
-        <ui:repeat value="#{playersForTeam.team.players}" var="player">
-            <li>
-                <h:link value="#{player.name} #{player.jerseyNumber}" outcome="playerDetails?playerId=#{player.id}" />
-            </li>
-        </ui:repeat>
-    </ol>
-    <h:form>
-        <h:inputText a:placeholder="name" value="#{playersForTeam.playerToCreate.name}" required="true" />
-        <h:commandButton value="Add player to the team" action="#{playersForTeam.createPlayer}" >
-            <f:param name="teamId" value="#{playersForTeam.team.id}" />
-        </h:commandButton>
-    </h:form>
-    <h:link outcome="index" value="Back to teams page"/>
+    <header>
+        <h2>Welcome, #{store.loggedUser.username}!</h2>
+        <div class="headerCenter">
+            <h:button value="Library" outcome="library?userId=#{store.loggedUser.id}"/>
+            <h:button value="Shop" outcome="shop?userId=#{store.loggedUser.id}"/>
+        </div>
+        <div class="headerRight">
+            <h2>Wallet: $900</h2>
+            <h:link value="Sign Out" outcome="index"/>
+        </div>
+    </header>
+
+    <div class="center">
+        <h2>Players</h2>
+        <ol>
+            <ui:repeat value="#{playersConsole.game.usersWhoPurchased}" var="players">
+                <li>#{players.username}</li>
+            </ui:repeat>
+        </ol>
+    </div>
+    <h:link value="Use MyBatis Implementation" outcome="myBatis/players?userId=#{store.loggedUser.id}&amp;gameId=#{playersConsole.game.id}"/>
 </h:body>
 </html>

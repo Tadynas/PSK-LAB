@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"  />
+    <title>Add Publisher</title>
+</h:head>
+<body>
+    <div class="center">
+        <h2>Admin</h2>
+        <h2>Add Publisher</h2>
+        <h:form class="center">
+            <label>Name</label>
+            <h:inputText value="#{publisherConsoleMyBatis.publisherToAdd.name}" required="true" />
+            <label>Founded(YYYY-MM-DD)</label>
+            <h:inputText value="#{publisherConsoleMyBatis.publisherToAdd.founded}" required="true">
+                <f:convertDateTime type="date" pattern="yyyy-MM-dd"/>
+            </h:inputText>
+            <label>Logo Link</label>
+            <h:inputText value="#{publisherConsoleMyBatis.publisherToAdd.logoLink}" required="true" />
+            <label>Website Link</label>
+            <h:inputText value="#{publisherConsoleMyBatis.publisherToAdd.websiteLink}" required="true" />
+            <h:commandButton value="Add Publisher" action="#{publisherConsoleMyBatis.addPublisher}" />
+        </h:form>
+    </div>
+    <h:link value="Use JPA Implementation" outcome="/addPublisher"/>
+</body>
+</html>

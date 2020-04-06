@@ -4,19 +4,25 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="lt.vu.mybatis.model.Team" alias="Team"/>
-        <typeAlias type="lt.vu.mybatis.model.Player" alias="Player"/>
+        <typeAlias type="lt.vu.mybatis.model.User" alias="User"/>
+        <typeAlias type="lt.vu.mybatis.model.Publisher" alias="Publisher"/>
+        <typeAlias type="lt.vu.mybatis.model.Game" alias="Game"/>
+        <typeAlias type="lt.vu.mybatis.model.UserGame" alias="UserGame"/>
+
     </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="MANAGED"/>
             <dataSource type="JNDI">
-                <property name="data_source" value="PlayersDataSource"/>
+                <property name="data_source" value="SteamDataSource"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis.xml/TeamMapper.xml"/>
-        <mapper resource="mybatis.xml/PlayerMapper.xml"/>
+        <mapper resource="mybatis.xml/UserMapper.xml"/>
+        <mapper resource="mybatis.xml/PublisherMapper.xml"/>
+        <mapper resource="mybatis.xml/GameMapper.xml"/>
+        <mapper resource="mybatis.xml/UserGameMapper.xml"/>
+
     </mappers>
 </configuration>

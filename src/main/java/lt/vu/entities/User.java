@@ -21,11 +21,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(max = 50)
+    @Size(max = 64)
     @Column(name = "USERNAME")
     private String username;
 
-    @Size(max = 50)
+    @Size(max = 64)
     @Column(name = "PASSWORD")
     private String password;
 

@@ -21,24 +21,23 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(max = 50)
+    @Size(max = 64)
     @Column(name = "TITLE")
     private String title;
 
     @Column(name = "PRICE")
     private float price;
 
-    @Size(max = 100)
+    @Size(max = 256)
     @Column(name = "COVER_LINK")
     private String coverLink;
 
     @ManyToOne
-    @JoinColumn(name="PUBLISHER_ID")
+    @JoinColumn(name="PUBLISHER_ID", referencedColumnName = "ID")
     private Publisher publisher;
 
     @ManyToMany(mappedBy = "purchasedGames")
-    private List<User> usersWhoPurchased = new ArrayList<>();;
-
+    private List<User> usersWhoPurchased = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -51,8 +50,6 @@ public class Game {
                 Objects.equals(coverLink, game.coverLink) &&
                 Objects.equals(publisher, game.publisher) &&
                 Objects.equals(usersWhoPurchased, game.usersWhoPurchased);
-
-
     }
 
     @Override

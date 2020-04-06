@@ -1,9 +1,9 @@
-package lt.vu.usecases;
+package lt.vu.usecases.mybatis;
 
 import lombok.Getter;
 import lombok.Setter;
-import lt.vu.entities.User;
-import lt.vu.persistence.UsersDAO;
+import lt.vu.mybatis.dao.UserMapper;
+import lt.vu.mybatis.model.User;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -12,10 +12,10 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Model
-public class Users {
+public class UsersMyBatis {
 
     @Inject
-    private UsersDAO usersDAO;
+    private UserMapper userMapper;
 
     @Getter
     private List<User> userList;
@@ -29,7 +29,7 @@ public class Users {
     }
 
     private void loadUserList(){
-        this.userList = usersDAO.loadAll();
+        userList = userMapper.selectAll();
     }
 
     @Transactional
@@ -37,7 +37,7 @@ public class Users {
         User userToCreate = new User();
         userToCreate.setUsername(username);
         userToCreate.setPassword(password);
-        this.usersDAO.persist(userToCreate);
+        userMapper.insert(userToCreate);
         return "index?faces-redirect=true";
     }
 

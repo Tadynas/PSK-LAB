@@ -1,0 +1,8 @@
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (1, 'https://static.raru.co.za/cover/2019/06/10/7410577-m.jpg?v=1564468951', 29.99, 'FIFA 20', 1);
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (2, 'https://upload.wikimedia.org/wikipedia/lt/e/ee/Battlefield_1_cover.jpg', 39.99, 'Battlefield', 1);
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (3, 'https://cdn.thegavoice.com/wp-content/uploads/2019/07/sims4-212x300.jpg', 35.99, 'Sims 4', 1);
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (4, 'https://www.mobygames.com/images/covers/l/474299-far-cry-5-windows-front-cover.jpg', 55.99, 'Far Cry', 2);
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (5, 'https://cdn.europosters.eu/image/750webp/15072.webp', 9.99, 'Watch Dogs', 2);
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (6, 'https://cdn11.bigcommerce.com/s-oxhrdsgr09/images/stencil/640w/products/1855/2214/Screen_Shot_2018-09-26_at_10.30.34_PM__78295.1538017421.png?c=2&imbypass=on', 49.99, 'Assasin''s Creed', 2);
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (7, 'https://cdn-products.eneba.com/resized-products/4FTGL0Ta9wnP4dqoBDEEE91a45upnnRDxUHIpKNwvIA_390x400_1x-0.jpeg', 37.99, 'Call Of Duty', 3);
+INSERT INTO PUBLIC.GAME (ID, COVER_LINK, PRICE, TITLE, PUBLISHER_ID) VALUES (8, 'https://images-na.ssl-images-amazon.com/images/I/5159Nq1DabL._AC_.jpg', 26.99, 'Destiny', 3);

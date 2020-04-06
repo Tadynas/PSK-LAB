@@ -1,0 +1,3 @@
+INSERT INTO PUBLIC.PUBLISHER (ID, FOUNDED, LOGO_LINK, NAME, WEBSITE_LINK) VALUES (1, '1982-05-27 03:00:00.000000000', 'https://cdn4.iconfinder.com/data/icons/logos-and-brands-1/512/104_Ea_logo_logos-512.png', 'EA', 'https://www.ea.com');
+INSERT INTO PUBLIC.PUBLISHER (ID, FOUNDED, LOGO_LINK, NAME, WEBSITE_LINK) VALUES (2, '1986-03-12 02:00:00.000000000', 'https://upload.wikimedia.org/wikipedia/lt/f/fb/Ubisoft_logo_hd.jpg', 'Ubisoft', 'https://www.ubisoft.com');
+INSERT INTO PUBLIC.PUBLISHER (ID, FOUNDED, LOGO_LINK, NAME, WEBSITE_LINK) VALUES (3, '1979-10-01 02:00:00.000000000', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Activision.svg/1198px-Activision.svg.png', 'Activision', 'https://www.activision.com');

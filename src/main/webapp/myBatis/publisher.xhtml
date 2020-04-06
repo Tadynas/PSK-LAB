@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 <h:head>
     <h:outputStylesheet library="css" name="style.css"  />
@@ -24,7 +24,12 @@
     <div class="center">
         <h2>#{publisherInfoMyBatis.publisher.name}</h2>
         <h:graphicImage value="#{publisherInfoMyBatis.publisher.logoLink}" height="100"/>
-        <h3>Founded - #{publisherInfoMyBatis.publisher.founded}</h3>
+        <h3>
+            Founded -
+            <h:outputText value="#{publisherInfoMyBatis.publisher.founded}" >
+                <f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+            </h:outputText>
+        </h3>
         <a href="#{publisherInfoMyBatis.publisher.websiteLink}" target="_blank">Official Website</a>
     </div>
 

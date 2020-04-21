@@ -11,6 +11,7 @@ import lt.vu.mybatis.model.User;
 import lt.vu.mybatis.model.UserGame;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -56,17 +57,9 @@ public class StoreMyBatis implements Serializable {
 
     private void loadGames(){
         storeGames = gameMapper.selectAll();
-        purchasedGames = gameMapper.selectAll();
-
-        for (int i = 0; i < storeGames.size(); i++) {
-            for(Game purchasedGame : loggedUser.getPurchasedGames())
-            {
-                if(storeGames.get(i).getId().equals(purchasedGame.getId()))
-                {
-                    storeGames.remove(i);
-                    break;
-                }
-            }
+        purchasedGames = loggedUser.getPurchasedGames();
+        for(Game purchasedGame : loggedUser.getPurchasedGames()) {
+            storeGames.removeIf(game -> game.getId().equals(purchasedGame.getId()));
         }
     }
 

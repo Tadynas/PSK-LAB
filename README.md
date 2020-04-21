@@ -14,6 +14,11 @@ Project is based on *Maven*, thus import project to IntelliJ IDEA by:
 
 ## Database
 
+### Diagram
+
+![](DB%20Diagram.png)
+
+### Source
 Database will be created after first successful launch. Source URL: "jdbc:h2:~/h2database/SteamDB;AUTO_SERVER=TRUE". User: "sa" Password: "sa".
 Additionally, database will filled data and SQL insert files can be found at: "src\main\resources\Database".
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 <h:head>
     <h:outputStylesheet library="css" name="style.css"  />
@@ -16,6 +16,11 @@
             <label>Password</label>
             <h:inputSecret value="#{users.password}" required="true" />
             <h:commandButton value="Sign Up" action="#{users.createUser}" actionListener="index"/>
+        </h:form>
+
+        <h:form class="center">
+            <h:outputText value="#{generateUsername.status}" />
+            <h:commandButton value="Generate Random Username" disabled="#{generateUsername.generating}" action="#{generateUsername.generate()}"/>
         </h:form>
     </div>
     <h:link value="Use MyBatis Implementation" outcome="myBatis/signup"/>

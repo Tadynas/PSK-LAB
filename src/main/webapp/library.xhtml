@@ -16,7 +16,7 @@
             <h:button value="Shop" outcome="shop?userId=#{store.loggedUser.id}"/>
         </div>
         <div class="headerRight">
-            <h2>Wallet: $900</h2>
+            <h2>Wallet: $#{store.loggedUser.wallet}</h2>
             <h:link value="Sign Out" outcome="index"/>
         </div>
     </header>

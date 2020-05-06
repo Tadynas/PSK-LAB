@@ -12,10 +12,13 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.OptimisticLockException;
+import javax.swing.*;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
@@ -57,8 +60,14 @@ public class Store implements Serializable {
     @Transactional
     @LoggedInvocation
     public String buyGame(Game game){
-        loggedUser.getPurchasedGames().add(game);
-        usersDAO.update(loggedUser);
+        try{
+            loggedUser.getPurchasedGames().add(game);
+            float remainingWalletAmount = Math.round((loggedUser.getWallet()-game.getPrice()) * 100.0f) / 100.0f;
+            loggedUser.setWallet(remainingWalletAmount);
+            usersDAO.update(loggedUser);
+        } catch (OptimisticLockException e) {
+            return "shop?faces-redirect=true&userId=" + loggedUser.getId() + "&error=optimistic-lock-exception";
+        }
         return "shop?faces-redirect=true&userId=" + loggedUser.getId();
     }
 }

@@ -29,12 +29,19 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "WALLET")
+    private float wallet;
+
     @ManyToMany
     @JoinTable(
             name = "USER_GAME",
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "GAME_ID"))
-    private List<Game> purchasedGames = new ArrayList<>();;
+    private List<Game> purchasedGames = new ArrayList<>();
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 
     @Override
     public boolean equals(Object o) {

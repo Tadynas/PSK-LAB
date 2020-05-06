@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 <h:head>
     <h:outputStylesheet library="css" name="style.css"  />
@@ -17,7 +16,7 @@
             <h:button value="Shop" outcome="shop?userId=#{store.loggedUser.id}"/>
         </div>
         <div class="headerRight">
-            <h2>Wallet: $900</h2>
+            <h2>Wallet: $#{store.loggedUser.wallet}</h2>
             <h:link value="Sign Out" outcome="index"/>
         </div>
     </header>
@@ -36,13 +35,16 @@
                         <h:graphicImage value="#{game.coverLink}"/>
                         <br/>
                         <h:form>
-                            <h:commandButton value="$#{game.price}" action="#{store.buyGame(game)}"/>
+                            <h:commandButton value="$#{game.price}" disabled="#{store.loggedUser.wallet lt game.price or store.loggedUser.wallet eq game.price}"  action="#{store.buyGame(game)}"/>
                         </h:form>
                     </h:form>
                 </ui:repeat>
             </div>
         </ui:repeat>
     </div>
+    <h:outputScript rendered="#{param['error'] == 'optimistic-lock-exception'}">
+        alert("WARNING! Current action cannot be done! It seems that your wallet has been modified by another user. Please, try again.");
+    </h:outputScript>
     <h:link value="Use MyBatis Implementation" outcome="myBatis/shop?userId=#{store.loggedUser.id}"/>
 </h:body>
 </html>

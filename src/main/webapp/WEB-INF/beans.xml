@@ -4,9 +4,17 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
-        bean-discovery-mode="annotated">
+        bean-discovery-mode="all">
 
     <interceptors>
-        <class>lt.vu.interceptors.MethodLogger</class>
+        <class>lt.vu.interceptors.CreditCardValidator</class>
     </interceptors>
+
+<!--    <alternatives>-->
+<!--        <class>lt.vu.services.TestingUsername</class>-->
+<!--    </alternatives>-->
+
+    <decorators>
+        <class>lt.vu.services.PremiumUsername</class>
+    </decorators>
 </beans>

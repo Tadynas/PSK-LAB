@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
+
 @Model
 public class Users {
 
@@ -24,7 +25,7 @@ public class Users {
     private String username, password;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         loadUserList();
     }
 

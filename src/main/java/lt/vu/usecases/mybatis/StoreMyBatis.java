@@ -2,7 +2,7 @@ package lt.vu.usecases.mybatis;
 
 import lombok.Getter;
 import lombok.Setter;
-import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.interceptors.ValidateCreditCard;
 import lt.vu.mybatis.dao.GameMapper;
 import lt.vu.mybatis.dao.UserGameMapper;
 import lt.vu.mybatis.dao.UserMapper;
@@ -11,7 +11,6 @@ import lt.vu.mybatis.model.User;
 import lt.vu.mybatis.model.UserGame;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -64,7 +63,6 @@ public class StoreMyBatis implements Serializable {
     }
 
     @Transactional
-    @LoggedInvocation
     public String buyGame(Game game){
         UserGame userGameToCreate = new UserGame();
         userGameToCreate.setUserId(loggedUser.getId());

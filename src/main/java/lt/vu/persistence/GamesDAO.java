@@ -1,6 +1,7 @@
 package lt.vu.persistence;
 
 import lt.vu.entities.Game;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -27,4 +28,9 @@ public class GamesDAO {
     public Game findOne(Integer id) {
         return em.find(Game.class, id);
     }
+
+    public Game update(Game game){
+        return em.merge(game);
+    }
+
 }

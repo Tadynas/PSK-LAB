@@ -6,6 +6,7 @@ import lt.vu.persistence.GamesDAO;
 import lt.vu.persistence.UsersDAO;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import java.util.ArrayList;
